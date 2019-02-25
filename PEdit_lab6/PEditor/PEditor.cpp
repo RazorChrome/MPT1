@@ -4,10 +4,10 @@
 
 using namespace std;
 
-bool TEditor::NumberIsNull()
+bool PEditor::NumberIsNull()
 {
 	regex pNumreg("-?0,?0*");
-	if (regex_match(CEdit, pNumreg)) {
+	if (regex_match(PEdit, pNumreg)) {
 		return true;
 	}
 	else {
@@ -15,26 +15,26 @@ bool TEditor::NumberIsNull()
 	}
 }
 
-string TEditor::AddSign()
+string PEditor::AddSign()
 {
 
-	if (CEdit[0] == '-') {
-		CEdit.erase(CEdit.find('-'), 1);
+	if (PEdit[0] == '-') {
+		PEdit.erase(PEdit.find('-'), 1);
 	}
 	else {
-		CEdit = "-" + CEdit;
+		PEdit = "-" + PEdit;
 	}
-	return CEdit; // ???
+	return PEdit; // ???
 }
 
 
 
-string  TEditor::AddPNumber(int a) 
+string  PEditor::AddPNumber(int a) 
 {
 	string d;
 
-	if (CEdit == "0") {
-		CEdit = "";
+	if (PEdit == "0") {
+		PEdit = "";
 	}
 	switch (a)
 	{
@@ -66,49 +66,49 @@ string  TEditor::AddPNumber(int a)
 		d = "";
 		break;
 	}
-	CEdit.append(d);
-	return CEdit;
+	PEdit.append(d);
+	return PEdit;
 
 }
 
-string TEditor::AddNull()
+string PEditor::AddNull()
 {
 	return AddPNumber(0);
 }
-string TEditor::BackSpace()
+string PEditor::BackSpace()
 {
 	int n;
-	n = CEdit.length();
-	CEdit.erase(n - 1, 1);//CEdit.erase(CEdit.length(), 2);
-	if ((CEdit == "") || (CEdit == "-")) { // work
-		CEdit = Nu;
+	n = PEdit.length();
+	PEdit.erase(n - 1, 1);//PEdit.erase(PEdit.length(), 2);
+	if ((PEdit == "") || (PEdit == "-")) { // work
+		PEdit = Nul;
 	}
 
-	return CEdit;
+	return PEdit;
 }
-string TEditor::Clear()
+string PEditor::Clear()
 {
-	CEdit = Nu;
-	return CEdit;
+	PEdit = Nul;
+	return PEdit;
 
 }
 
-TEditor::TEditor(string Cr)
+PEditor::PEditor(string Cr)
 {
 	regex pNumreg("-?(0|[1-9A-F][0-9A-F]*),?[0-9A-F]*");
 	if (regex_match(Cr, pNumreg))
-		CEdit = Cr;
+		PEdit = Cr;
 }
-string TEditor::GetStore() {
-	return CEdit;
+string PEditor::GetStore() {
+	return PEdit;
 }
-void TEditor::SetStore(string a) {
+void PEditor::SetStore(string a) {
 	regex pNumreg("-?(0|[1-9A-F][0-9A-F]*),?[0-9A-F]*");
 	if (regex_match(a, pNumreg))
-		CEdit = a;
+		PEdit = a;
 }
 
-string TEditor::Edit(int a)
+string PEditor::Edit(int a)
 {
 	string Result;
 	switch (a) {
@@ -132,8 +132,7 @@ string TEditor::Edit(int a)
 		Result = AddDot();
 		break;
 	default:
-		cout << "Задана не корректная команда" << endl;
-		Result = CEdit;
+		Result = PEdit;
 		break;
 
 	}
@@ -141,11 +140,11 @@ string TEditor::Edit(int a)
 
 }
 
-string TEditor::AddDot()
+string PEditor::AddDot()
 {
-	if (CEdit.find(',') == -1) {
-		CEdit += ",";
+	if (PEdit.find(',') == -1) {
+		PEdit += ",";
 	}
-	return CEdit;
+	return PEdit;
 }
 

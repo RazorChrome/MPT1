@@ -12,18 +12,18 @@ namespace PEditor_test
 		
 		TEST_METHOD(PEdit_Construct)
 		{
-			TEditor t;
+			PEditor t;
 			string output = "10";
 			t.SetStore(output);
 			Assert::AreEqual(output, t.GetStore());
 		}
 		TEST_METHOD(PEdit_AddSign)
 		{
-			TEditor t;
+			PEditor t;
 			string str = "9";
 			t.SetStore(str);
 			t.AddSign();
-			TEditor t1;
+			PEditor t1;
 			string str1 = "-9";
 			t1.SetStore(str1);
 			t1.AddSign();
@@ -34,11 +34,11 @@ namespace PEditor_test
 		}
 		TEST_METHOD(PEdit_NumberisNull)
 		{
-			TEditor t;
+			PEditor t;
 			string str = "0,";
-			TEditor t1;
+			PEditor t1;
 			string str1 = "-0,";
-			TEditor t2;
+			PEditor t2;
 			string str2 = "1";
 			t.SetStore(str);
 			t1.SetStore(str1);
@@ -49,14 +49,14 @@ namespace PEditor_test
 		}
 		TEST_METHOD(PEdit_AddPNumber)
 		{
-			TEditor t;
+			PEditor t;
 			t.AddPNumber(10);
 
 			Assert::AreEqual(string("A"), t.GetStore());
 		}
 		TEST_METHOD(PEdit_AddNull)
 		{
-			TEditor t;
+			PEditor t;
 			string str = "5";
 			t.SetStore(str);
 			t.AddNull();
@@ -64,7 +64,7 @@ namespace PEditor_test
 		}
 		TEST_METHOD(PEdit_Backspace)
 		{
-			TEditor t(string("-12,34"));
+			PEditor t(string("-12,34"));
 			t.BackSpace();
 			Assert::AreEqual(string("-12,3"), t.GetStore());
 			t.BackSpace();
@@ -79,14 +79,14 @@ namespace PEditor_test
 		}
 		TEST_METHOD(PEdit_Clear)
 		{
-			TEditor t;
+			PEditor t;
 			t.SetStore("5");
 			t.Clear();
 			Assert::AreEqual(string("0"), t.GetStore());
 		}
 		TEST_METHOD(PEdit_Edit)
 		{
-			TEditor t;
+			PEditor t;
 			t.Edit(10);
 			Assert::AreEqual(string("A"), t.GetStore());
 			t.Edit(1);
@@ -106,7 +106,7 @@ namespace PEditor_test
 		}
 		TEST_METHOD(PEdit_SetStore)
 		{
-			TEditor t;
+			PEditor t;
 			t.SetStore("0,C");
 			Assert::AreEqual(string("0,C"), t.GetStore());
 			t.SetStore("-7,FFC");

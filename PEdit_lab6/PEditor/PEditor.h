@@ -4,12 +4,12 @@
 #include <cstdlib>
 using namespace std;
 
-string const Nu = "0";
+string const Nul = "0";
 
-class TEditor
+class PEditor
 {
 private:
-	string CEdit; // строка
+	string PEdit; // строка
 	string const separator = ",";
 
 
@@ -22,16 +22,16 @@ public:
 		Dot = 23
 
 	}; // ???
-	bool  NumberIsNull(); // число≈стьЌоль
-	string AddSign(); // добавить«нак
-	string AddPNumber(int a); //добавить–-ичную цифру
-	string AddNull(); // добавитьЌоль
-	string BackSpace(); // забой—имвола
-	string Clear(); // ќчистить
-	TEditor(string Cr = Nu); // конструтор
-	string GetStore(); // читать—трока¬формате—троки
-	void SetStore(string a); //писать—трока¬формате—троки
-	string Edit(int a); // –едактировать
+	bool  NumberIsNull(); 
+	string AddSign(); 
+	string AddPNumber(int a); 
+	string AddNull(); 
+	string BackSpace(); 
+	string Clear(); 
+	PEditor(string Cr = Nul); 
+	string GetStore(); 
+	void SetStore(string a); 
+	string Edit(int a); 
 	string AddDot();
 
 };
