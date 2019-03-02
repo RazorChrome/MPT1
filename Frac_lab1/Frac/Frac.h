@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <cmath>
-#include <sstream>
 
 using namespace std;
 
@@ -60,6 +59,12 @@ public:
 		}
 	}
 
+	Frac(double d) {
+		numer = d * 100000;
+		denom = 100000;
+		reduction();
+	}
+
 	Frac(string str)
 	{
 		stringstream ss{ str };
@@ -115,7 +120,7 @@ public:
 		return Frac(numer*-1, denom);
 	}
 
-	const bool operator>(const Frac &f)
+	 bool operator>(const Frac &f)
 	{
 		double f1 = numer / denom;
 		double f2 = f.numer / f.denom;
@@ -123,7 +128,15 @@ public:
 		return f1 > f2;
 	}
 
-	const bool operator==(const Frac &f)
+	bool operator<(const Frac &f)
+	{
+		double f1 = numer / denom;
+		double f2 = f.numer / f.denom;
+
+		return f1 < f2;
+	}
+
+	 bool operator==(const Frac &f)
 	{
 		if (numer == f.numer && denom == f.denom) return true;
 		return false;
@@ -152,5 +165,18 @@ public:
 		stringstream ss;
 		ss << numer << "/" << denom;
 		return ss.str();
+	}
+
+	operator double() const
+	{
+		return double(this->numer / this->denom);
+	}
+
+	Frac operator = (const double &d)
+	{
+		this->numer = d * 100000;
+		this->denom = 100000;
+		reduction();
+		return *this;
 	}
 };
